@@ -1,0 +1,16 @@
+build:
+  maxIssues: 0
+
+processors:
+  active: true
+
+console-reports:
+  active: true
+
+output-reports:
+  active: true
+
+complexity:
+  LongParameterList:
+    constructorThreshold: 8
+    functionThreshold: 8

@@ -1,0 +1,7 @@
+**/.idea
+**/node_modules
+**/.gradle
+**/out
+**/build
+
+**/local.settings.json
