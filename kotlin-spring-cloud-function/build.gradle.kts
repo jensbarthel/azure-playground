@@ -12,6 +12,13 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:[3.0,4.0)")
         classpath("org.jetbrains.kotlin:kotlin-noarg:[1.4.0,2.2)")
         classpath("org.jetbrains.kotlin:kotlin-allopen:[1.4.0,2.2)")
+
+        // See https://github.com/microsoft/azure-gradle-plugins/issues/192#issuecomment-2720392919
+        // Remove when fixed in >1.16.1
+        classpath("com.microsoft.azure:azure-functions-gradle-plugin:1.16.1") {
+            exclude(group = "com.microsoft.azure", module = "azure-toolkit-appservice-lib")
+        }
+        classpath("com.microsoft.azure:azure-toolkit-appservice-lib:0.52.0")
     }
 }
 
@@ -21,7 +28,7 @@ plugins {
     id("io.gitlab.arturbosch.detekt") version "[1.20, 2.0)"
     kotlin("plugin.spring") version "[1.4.0,2.2)"
     id("org.jetbrains.kotlin.plugin.serialization") version "[1.4.0,2.2)"
-    id("com.microsoft.azure.azurefunctions") version "[1.16.0,2.0)"
+    id("com.microsoft.azure.azurefunctions") version "1.16.1"
     id("org.jetbrains.kotlin.plugin.jpa") version "[1.4.0,2.2)"
 }
 
@@ -85,7 +92,8 @@ tasks.withType<Jar> {
 enum class Stage(val resourceGroup: String, val internalProfile: String) {
     DEV("azureplayground", "dev");
 
-    val appname get() = "springflexapptest$internalProfile"
+    val appname get() = "ndispringflexappdev"
+    val planName get() = "asp-ndispringflexappdev"
 }
 
 val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
