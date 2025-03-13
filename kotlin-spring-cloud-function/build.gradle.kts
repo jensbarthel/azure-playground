@@ -92,8 +92,8 @@ tasks.withType<Jar> {
 enum class Stage(val resourceGroup: String, val internalProfile: String) {
     DEV("azureplayground", "dev");
 
-    val appname get() = "ndispringflexappdev"
-    val planName get() = "asp-ndispringflexappdev"
+    val appname get() = "ndispringflexapp$internalProfile"
+    val planName get() = "asp-ndispringflexapp$internalProfile"
 }
 
 val compileKotlin: org.jetbrains.kotlin.gradle.tasks.KotlinCompile by tasks
